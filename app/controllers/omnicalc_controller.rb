@@ -35,11 +35,11 @@ class OmnicalcController < ApplicationController
 
   def payment_results
     @apr = params.fetch("user_apr").to_f
-    apr_calc = @apr / 100 / 12
+    @apr_calc = @apr / 100 / 12
     @years = params.fetch("user_years").to_f
-    year_calc = @years*12
+    @years_calc = @years * 12
     @principal = params.fetch("user_principal").to_f
-    @the_results = (apr_calc * @principal )/( 1- (1 + apr_calc))**(- year_calc)
+    @the_results = (@apr_calc * @principal )/(1 - (1 + @apr_calc)**(- @years_calc))
     render({ :template => "omnicalc_templates/payment_results"})
   end
 
