@@ -46,7 +46,7 @@ class OmnicalcController < ApplicationController
   def random_results
     @min_num = params.fetch("user_min").to_f
     @max_num = params.fetch("user_max").to_f
-    @the_results = random(@min_num..@max_num)
+    @the_results = rand(@min_num..@max_num)
     render({ :template => "omnicalc_templates/random_results"})
   end
 
